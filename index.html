@@ -10,9 +10,11 @@
     <!-- OpenGraph Meta Tags for Social Sharing -->
     <meta property="og:title" content="Create a Magic Love Link ❤️">
     <meta property="og:description" content="Surprise your partner with a beautiful, interactive wishing page. ✨">
-    <meta property="og:image" content="og_image_romantic_wish.png">
+    <meta property="og:image" content="https://hello-ehsan.github.io/bloomumu/og_image_romantic_wish.png">
+    <meta property="og:url" content="https://hello-ehsan.github.io/bloomumu/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://hello-ehsan.github.io/bloomumu/og_image_romantic_wish.png">
     <!-- Modern Elegant Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;600&display=swap"
@@ -321,6 +323,55 @@
             border-bottom-color: var(--text-main);
         }
 
+        /* Interactive Footer Branding */
+        .footer-branding {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            z-index: 50;
+            padding: 0 1rem;
+        }
+
+        .creator-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .creator-link:hover, .creator-link:active {
+            color: var(--primary);
+            background: rgba(255, 77, 109, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+        }
+
+        .creator-link svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .footer-tag {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.65rem;
+            margin-top: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
 
 
         @media (max-width: 600px) {
@@ -390,12 +441,12 @@
     </div>
 
     <!-- Creator Branding -->
-    <div style="position: absolute; bottom: 15px; width: 100%; text-align: center; z-index: 50;">
-        <a href="https://www.linkedin.com/in/hello-ehsan/" target="_blank"
-            style="color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.85rem; font-family: 'Outfit', sans-serif; transition: color 0.3s;"
-            onmouseover="this.style.color='var(--primary)'"
-            onmouseout="this.style.color='rgba(255,255,255,0.3)'">Created with ❤️ by Ehsanul Islam Sajjad</a>
-        <div style="color: rgba(255,255,255,0.2); font-size: 0.7rem; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase;">
+    <div class="footer-branding">
+        <a href="https://www.linkedin.com/in/hello-ehsan/" target="_blank" class="creator-link">
+            <span>Created with ❤️ by <strong>Ehsanul Islam Sajjad</strong></span>
+            <svg viewBox="0 0 24 24"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+        </a>
+        <div class="footer-tag">
             🔒 Privacy First & SSL Secured
         </div>
     </div>
@@ -409,6 +460,12 @@
 
         function playClickSound() {
             if(audioCtx.state === 'suspended') audioCtx.resume();
+            
+            // Haptic Feedback for Mobile
+            if (navigator.vibrate) {
+                navigator.vibrate(12); 
+            }
+
             const osc = audioCtx.createOscillator();
             const gainNode = audioCtx.createGain();
             
