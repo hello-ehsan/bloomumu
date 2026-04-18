@@ -34,4 +34,4 @@ This project started with a heartbeat and a wish. It was created by **Ehsanul Is
 
 *Crafted with ❤️ by Ehsanul Islam Sajjad*
 
-[Connect with me on LinkedIn](https://www.linkedin.com/in/hello-ehsan/)
+If this digital letter touched your heart, or if you have a magical idea to make it even better, [I'd love to hear from you](https://www.linkedin.com/in/hello-ehsan/).
