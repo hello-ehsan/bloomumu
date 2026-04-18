@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bloomumu - Generate a beautiful romantic wishing page for your partner.">
+    <title>Bloomumu | Share the Love 🌸</title>
+
+    <!-- OpenGraph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Create a Magic Love Link ❤️">
+    <meta property="og:description" content="Surprise your partner with a beautiful, interactive wishing page. ✨">
+    <meta property="og:image" content="og_image_romantic_wish.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- Modern Elegant Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Premium Dark Theme Color Palette */
+            --primary: #ff4d6d;
+            --primary-glow: rgba(255, 77, 109, 0.6);
+            --secondary: #ff8fa3;
+            --bg-dark: #0f0c1b;
+            --bg-radial: #2a1124;
+            --text-main: #ffffff;
+            --text-muted: #ffd6df;
+
+            /* Glassmorphism Tokens */
+            --glass-bg: rgba(20, 15, 30, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+            background: radial-gradient(circle at center, var(--bg-radial) 0%, var(--bg-dark) 100%);
+            padding: 20px 0;
+        }
+
+        /* Background Particle Animation */
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -10%;
+            color: var(--primary);
+            opacity: 0;
+            filter: drop-shadow(0 0 5px var(--primary-glow));
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.8) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.5) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Ambient Glow effect */
+        .ambient-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 1;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+        }
+
+        /* Layout Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            min-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* Premium Glassmorphism Card */
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid var(--glass-highlight);
+            border-left: 1px solid var(--glass-highlight);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3.5rem 2.5rem;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            animation: slideUpFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .subtitle {
+            font-weight: 300;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+        }
+
+        /* Form Elements */
+        .input-group {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .custom-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .custom-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 77, 109, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .custom-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Premium Interactive Button */
+        .btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1.1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 8px 25px rgba(255, 77, 109, 0.35);
+            font-family: inherit;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn:disabled {
+            background: #555;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.7;
+        }
+
+        /* Result Section */
+        .result-box {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            display: none;
+        }
+
+        .result-box.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .link-display {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--primary-glow);
+            border-radius: 8px;
+            padding: 0.8rem;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-family: monospace;
+            cursor: text;
+            text-align: center;
+        }
+
+        .btn-small {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: white;
+            padding: 0.8rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-small:hover {
+            background: var(--primary);
+        }
+
+        .action-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .action-link:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 2.5rem 1.5rem;
+                width: 90%;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .btn {
+                padding: 1.1rem 1.5rem;
+                font-size: 1.05rem;
+            }
+
+            .input-group {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="hearts-container" id="hearts" aria-hidden="true"></div>
+
+    <div class="container">
+        <main class="card">
+            <h1>Bloomumu 🌸</h1>
+            <p class="subtitle">Generate a beautiful, personalized, interactive wishing page for your partner.</p>
+
+            <div class="input-group">
+                <label class="input-label" for="userEmail">Your Email</label>
+                <input type="email" id="userEmail" class="custom-input" placeholder="Where should we send updates?"
+                    autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label" for="partnerName">Your Partner's Name</label>
+                <input type="text" id="partnerName" class="custom-input" placeholder="e.g. Mumu, Alex, Emma"
+                    autocomplete="off">
+            </div>
+
+            <button class="btn" id="generateBtn">Generate Magic Link ✨</button>
+
+            <!-- Result Box -->
+            <div class="result-box" id="resultBox">
+                <p class="input-label" style="text-align: center; color: var(--primary); font-weight: 600;">Your link is
+                    ready!</p>
+                <div class="link-display">
+                    <input type="text" id="generatedLink" class="link-input" readonly>
+                    <button class="btn-small" id="copyBtn">Copy Link 📋</button>
+                </div>
+                <a href="#" id="previewLink" class="action-link" target="_blank">Preview Your Page ↗️</a>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Creator Branding -->
+    <div style="position: absolute; bottom: 15px; width: 100%; text-align: center; z-index: 50;">
+        <a href="https://www.linkedin.com/in/hello-ehsan/" target="_blank"
+            style="color: rgba(255,255,255,0.3); text-decoration: none; font-size: 0.85rem; font-family: 'Outfit', sans-serif; transition: color 0.3s;"
+            onmouseover="this.style.color='var(--primary)'"
+            onmouseout="this.style.color='rgba(255,255,255,0.3)'">Created with ❤️ by Ehsanul Islam Sajjad</a>
+        <div style="color: rgba(255,255,255,0.2); font-size: 0.7rem; margin-top: 5px; letter-spacing: 1px; text-transform: uppercase;">
+            🔒 Privacy First & SSL Secured
+        </div>
+    </div>
+
+
+
+    <script>
+        // --- Web Audio API Sounds ---
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+
+        function playClickSound() {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            // A crisp, minimal "tik" sound (like an iPhone UI tap)
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime); 
+            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.03); 
+            
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
+            
+            osc.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.04);
+        }
+
+        // Attach sound to all buttons and links
+        document.addEventListener('touchstart', () => {
+            if(audioCtx.state === 'suspended') audioCtx.resume();
+        }, { once: true });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button, .btn, .action-link, a')) {
+                playClickSound();
+            }
+        });
+
+        // Particle Background
+        function createParticles() {
+            const container = document.getElementById('hearts');
+            const particles = ['❤️', '✨', '🌸', '💕'];
+            const particleCount = window.innerWidth > 768 ? 20 : 10;
+
+            for (let i = 0; i < particleCount; i++) {
+                setTimeout(() => spawnParticle(container, particles), Math.random() * 5000);
+            }
+        }
+
+        function spawnParticle(container, particles) {
+            const el = document.createElement('div');
+            el.className = 'heart';
+            el.innerText = particles[Math.floor(Math.random() * particles.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            el.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+            el.style.animationDelay = (Math.random() * 2) + 's';
+
+            container.appendChild(el);
+            el.addEventListener('animationend', () => {
+                el.remove();
+                spawnParticle(container, particles);
+            });
+        }
+        createParticles();
+
+        // Generator Logic
+        const userEmailInput = document.getElementById('userEmail');
+        const partnerNameInput = document.getElementById('partnerName');
+        const generateBtn = document.getElementById('generateBtn');
+        const resultBox = document.getElementById('resultBox');
+        const generatedLinkInput = document.getElementById('generatedLink');
+        const copyBtn = document.getElementById('copyBtn');
+        const previewLink = document.getElementById('previewLink');
+
+        // IMPORTANT: Replace this with your Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzvDfIY4Bf3bafLdTUjkqJqWXZ9RESK_H6KQm2PTAoBLkgrehzEPwBIsJ9D6m_5-NC12Q/exec";
+
+        // Input Validation
+        function checkInputs() {
+            const nameValid = partnerNameInput.value.trim() !== '';
+            const emailValid = userEmailInput.value.trim().includes('@');
+
+            if (nameValid && emailValid) {
+                generateBtn.removeAttribute('disabled');
+            } else {
+                generateBtn.setAttribute('disabled', 'true');
+            }
+        }
+
+        userEmailInput.addEventListener('input', checkInputs);
+        partnerNameInput.addEventListener('input', checkInputs);
+
+        // Initial state
+        generateBtn.setAttribute('disabled', 'true');
+
+        generateBtn.addEventListener('click', async () => {
+            const name = partnerNameInput.value.trim();
+            const email = userEmailInput.value.trim();
+            if (!name || !email) return;
+
+            generateBtn.innerText = "Generating... ⏳";
+            generateBtn.setAttribute('disabled', 'true');
+
+            // Send lead to Google Sheet via Web App URL
+            if (GOOGLE_SCRIPT_WEB_APP_URL.includes("script.google.com")) {
+                try {
+                    const formData = new FormData();
+                    formData.append('email', email);
+                    formData.append('partnerName', name);
+
+                    // We use no-cors to avoid CORS errors from Google scripts on simple submissions
+                    await fetch(GOOGLE_SCRIPT_WEB_APP_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData
+                    });
+                } catch (err) {
+                    console.log("Error saving lead", err);
+                }
+            }
+
+            generateBtn.innerText = "Generate Magic Link ✨";
+            generateBtn.removeAttribute('disabled');
+
+            // Generate URL
+            // Assuming mumu-love.html is in the same directory
+            let baseUrl = window.location.href;
+            baseUrl = baseUrl.substring(0, baseUrl.lastIndexOf('/'));
+            if (baseUrl === '') baseUrl = window.location.origin; // Fallback
+
+            const finalUrl = `${baseUrl}/bloomumu.html?to=${encodeURIComponent(name)}`;
+
+            generatedLinkInput.value = finalUrl;
+            previewLink.href = finalUrl;
+
+            resultBox.classList.add('active');
+
+            // Celebration particles
+            const container = document.getElementById('hearts');
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => spawnParticle(container, ['✨', '🎉']), i * 50);
+            }
+        });
+
+        copyBtn.addEventListener('click', () => {
+            generatedLinkInput.select();
+            document.execCommand('copy');
+
+            const originalText = copyBtn.innerText;
+            copyBtn.innerText = "Copied! ✅";
+            copyBtn.style.background = "var(--primary)";
+
+            setTimeout(() => {
+                copyBtn.innerText = originalText;
+                copyBtn.style.background = "transparent";
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
