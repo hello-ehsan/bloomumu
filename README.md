@@ -1,4 +1,4 @@
-# 🌸 Bloomumu
+# 🌸 Bloomumu: A Digital Love Letter
 
 > *"In the binary of life, you are the only code that matters."*
 
