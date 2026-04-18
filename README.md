@@ -17,7 +17,7 @@ You can see the journey I made for Mumu, or use the tool to create a little magi
 
 ### 📖 The Story
 
-This project started with a heartbeat and a wish. It was created by **Ehsanul Islam Sajjad** for **Tasnim Bintay Anwar Mumu**—as a way to bridge the distance and share a promise that lasts forever. It's a reminder that even in a world of screens, love can be felt, touched, and celebrated.
+This project started with a heartbeat and a wish. It was created by **Ehsanul Islam Sajjad** for **Tasnim Bintay Anwar Mumu** -as a way to bridge the distance and share a promise that lasts forever. It's a reminder that even in a world of screens, love can be felt, touched, and celebrated.
 
 ### 💖 What's Inside
 
@@ -34,4 +34,4 @@ This project started with a heartbeat and a wish. It was created by **Ehsanul Is
 
 *Crafted with ❤️ by Ehsanul Islam Sajjad*
 
-If this digital letter touched your heart, or if you have a magical idea to make it even better, [I'd love to hear from you](https://www.linkedin.com/in/hello-ehsan/).
+If you have any feedback or idea to make it even better, [I'd love to hear from you](https://www.linkedin.com/in/hello-ehsan/).

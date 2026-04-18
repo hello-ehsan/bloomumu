@@ -1,15 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Bloomumu - A special wishing page for someone special">
-    <title>Bloomumu | A Digital Love Letter 🌸</title>
+    <title>Bloomumu | A Digital Love Letter ðŸŒ¸</title>
 
     <!-- OpenGraph Meta Tags for Social Sharing -->
-    <meta property="og:title" content="A Special Surprise, Just For You ❤️">
-    <meta property="og:description" content="I hit the ultimate jackpot! Check out this beautiful romantic surprise... ✨">
+    <meta property="og:title" content="A Special Surprise, Just For You â¤ï¸">
+    <meta property="og:description" content="I hit the ultimate jackpot! Check out this beautiful romantic surprise... âœ¨">
     <meta property="og:image" content="https://hello-ehsan.github.io/bloomumu/og_image_romantic_wish.png">
     <meta property="og:url" content="https://hello-ehsan.github.io/bloomumu/">
     <meta property="og:type" content="website">
@@ -559,38 +559,105 @@
             font-weight: 600;
         }
 
+        /* === ENVELOPE === */
+        #envelopeScreen { position:fixed; top:0; left:0; width:100%; height:100%; z-index:200; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; background:radial-gradient(circle at center,#2a1124 0%,#0f0c1b 100%); transition:opacity .8s ease,transform .8s ease; }
+        #envelopeScreen.closing { opacity:0; transform:scale(1.04); pointer-events:none; }
+        .env-wrap { cursor:pointer; position:relative; width:260px; height:190px; filter:drop-shadow(0 20px 40px rgba(255,77,109,.35)); transition:transform .3s ease,filter .3s ease; }
+        .env-wrap:hover { transform:translateY(-8px) scale(1.03); filter:drop-shadow(0 30px 50px rgba(255,77,109,.55)); }
+        .env-body { position:absolute; bottom:0; width:260px; height:160px; background:linear-gradient(135deg,#2a1b3d,#1a0f2e); border-radius:4px 4px 12px 12px; border:1px solid rgba(255,77,109,.25); }
+        .env-body::before { content:''; position:absolute; top:0; left:0; border-left:130px solid transparent; border-right:130px solid transparent; border-top:80px solid rgba(255,77,109,.07); }
+        .env-body::after { content:''; position:absolute; bottom:0; left:0; border-left:130px solid transparent; border-right:130px solid transparent; border-bottom:85px solid rgba(255,77,109,.05); }
+        .env-letter { position:absolute; bottom:58%; left:50%; transform:translateX(-50%); width:200px; background:linear-gradient(135deg,#fff9f0,#ffe8ef); border-radius:6px 6px 0 0; padding:.8rem 1rem; text-align:center; font-family:'Dancing Script',cursive; color:var(--primary); font-size:1rem; box-shadow:0 -5px 20px rgba(0,0,0,.3); z-index:1; transition:bottom .8s cubic-bezier(.34,1.56,.64,1); }
+        .env-letter.peeking { bottom:28%; }
+        .env-flap { position:absolute; top:0; left:0; width:260px; height:115px; transform-origin:top center; transform:rotateX(0deg); transition:transform .7s cubic-bezier(.34,1.56,.64,1); z-index:3; }
+        .env-flap::before { content:''; position:absolute; top:0; left:0; border-left:130px solid transparent; border-right:130px solid transparent; border-top:110px solid #1e1030; }
+        .env-flap.open { transform:perspective(400px) rotateX(-162deg); }
+        .wax-seal { position:absolute; top:50%; left:50%; transform:translate(-50%,-8%); width:64px; height:64px; background:radial-gradient(circle at 35% 35%,#ff6b8a,var(--primary),#c91742); border-radius:50%; z-index:4; display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:white; box-shadow:0 0 0 4px rgba(255,77,109,.3),0 0 20px rgba(255,77,109,.6); animation:sealPulse 2.5s ease-in-out infinite; transition:transform .4s ease,opacity .4s ease; cursor:pointer; }
+        .wax-seal.cracking { transform:translate(-50%,-8%) scale(0) rotate(45deg); opacity:0; }
+        @keyframes sealPulse { 0%,100%{box-shadow:0 0 0 4px rgba(255,77,109,.3),0 0 20px rgba(255,77,109,.5);} 50%{box-shadow:0 0 0 8px rgba(255,77,109,.2),0 0 35px rgba(255,77,109,.8);} }
+        .env-to { font-family:'Dancing Script',cursive; font-size:1.3rem; color:var(--text-muted); opacity:.8; }
+        .env-hint { font-family:'Dancing Script',cursive; font-size:1.1rem; color:rgba(255,255,255,.4); animation:hintBlink 2s ease-in-out infinite alternate; }
+        @keyframes hintBlink { from{opacity:.3} to{opacity:.9} }
 
+        /* === CANVASES === */
+        #starCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:2; pointer-events:none; opacity:0; transition:opacity 1.5s ease; }
+        #starCanvas.visible { opacity:1; }
+        #confettiCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:100; pointer-events:none; }
 
-        @media (max-width: 600px) {
-            .card {
-                padding: 2.5rem 1.5rem;
-                width: 90%;
-                border-radius: 20px;
-            }
-            h1 { font-size: 2.8rem; }
-            .subtitle { font-size: 1.05rem; margin-bottom: 1.5rem; }
-            .btn { padding: 1.1rem 1.5rem; font-size: 1.05rem; width: 100%; }
-            
-            .scanner-container { width: 130px; height: 130px; margin: 1.5rem auto; }
-            .scanner-icon { font-size: 3rem; }
-            
-            .social-share { gap: 1rem; flex-wrap: wrap; justify-content: center; }
-            .social-btn { width: 50px; height: 50px; }
-            .social-btn svg { width: 24px; height: 24px; }
-            
-            #step5 h1 { font-size: 2.8rem; }
-            #step5 .final-heart { font-size: 4rem; }
-            
-            .toast-msg { width: 90%; font-size: 0.9rem; padding: 12px 20px; }
-            
+        /* === PROGRESS BAR === */
+        .prog-wrap { position:fixed; top:0; left:0; width:100%; height:3px; z-index:50; background:rgba(255,255,255,.05); display:none; }
+        .prog-fill { height:100%; background:linear-gradient(90deg,var(--primary),var(--secondary)); transition:width .6s ease; box-shadow:0 0 8px var(--primary-glow); width:0%; }
+        .prog-wrap.visible { display:block; }
 
-            
-            .progress-dots { margin-top: 1.8rem; }
+        /* === SCRATCH REVEAL === */
+        .scratch-wrap { position:relative; margin:1.2rem auto; border-radius:12px; overflow:hidden; }
+        .scratch-msg { background:rgba(255,77,109,.06); border:1px dashed rgba(255,77,109,.3); border-radius:12px; padding:1.2rem; font-family:'Dancing Script',cursive; font-size:1.15rem; color:var(--text-muted); line-height:1.6; }
+        #scratchCanvas { position:absolute; top:0; left:0; width:100%; height:100%; cursor:crosshair; border-radius:12px; touch-action:none; }
+        .scratch-hint { font-size:.78rem; color:rgba(255,255,255,.3); margin-top:.5rem; letter-spacing:.5px; }
+
+        /* === TIMELINE === */
+        .timeline { position:relative; margin:1.2rem 0; text-align:left; }
+        .timeline::before { content:''; position:absolute; left:19px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--primary),rgba(255,77,109,.1)); border-radius:2px; }
+        .tl-item { display:flex; gap:1rem; margin-bottom:1.4rem; opacity:0; transform:translateX(-20px); transition:all .5s ease; }
+        .tl-item.revealed { opacity:1; transform:translateX(0); }
+        .tl-dot { width:40px; height:40px; min-width:40px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--secondary)); display:flex; align-items:center; justify-content:center; font-size:1.1rem; box-shadow:0 0 12px var(--primary-glow); position:relative; z-index:1; }
+        .tl-content { padding:.3rem 0; }
+        .tl-label { font-weight:600; color:var(--text-main); font-size:.95rem; }
+        .tl-date { font-family:'Dancing Script',cursive; color:var(--secondary); font-size:1rem; margin-top:2px; }
+
+        /* === INK TYPEWRITER === */
+        .ink-text { font-family:'Dancing Script',cursive; font-size:1.25rem; color:var(--text-muted); line-height:1.9; text-align:center; min-height:3.5rem; }
+        .ink-cursor { display:inline-block; width:2px; height:1.1em; background:var(--primary); margin-left:2px; vertical-align:text-bottom; animation:cursorBlink .8s step-end infinite; }
+        @keyframes cursorBlink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* === WRITE BACK === */
+        .writeback-section { margin-top:1.5rem; border-top:1px solid var(--glass-border); padding-top:1.5rem; }
+        .writeback-section > p { font-size:.9rem; color:rgba(255,255,255,.45); margin-bottom:.8rem; }
+        #replyText { width:100%; background:rgba(0,0,0,.2); border:1px solid var(--glass-border); border-radius:12px; padding:.9rem 1rem; color:#fff; font-family:'Outfit',sans-serif; font-size:1rem; resize:none; outline:none; transition:border-color .3s ease; min-height:80px; }
+        #replyText:focus { border-color:var(--primary); box-shadow:0 0 12px rgba(255,77,109,.2); }
+        #sendReplyBtn { margin-top:.8rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); border:none; color:#fff; padding:.9rem 2rem; border-radius:50px; cursor:pointer; font-family:'Outfit',sans-serif; font-weight:600; font-size:1rem; width:100%; transition:all .3s ease; box-shadow:0 6px 20px rgba(255,77,109,.35); }
+        #sendReplyBtn:hover { transform:translateY(-3px); box-shadow:0 10px 25px rgba(255,77,109,.5); }
+
+        /* === REPLY OVERLAY === */
+        #replyOverlay { position:fixed; top:0; left:0; width:100%; height:100%; z-index:300; background:rgba(10,6,20,.97); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2rem; opacity:0; pointer-events:none; transition:opacity .8s ease; }
+        #replyOverlay.visible { opacity:1; pointer-events:auto; }
+        .reply-words { font-family:'Dancing Script',cursive; font-size:clamp(1.8rem,6vw,3.5rem); color:var(--primary); text-align:center; line-height:1.5; text-shadow:0 0 30px var(--primary-glow); max-width:700px; animation:wordGlow 2s ease-in-out infinite alternate; }
+        @keyframes wordGlow { from{text-shadow:0 0 20px var(--primary-glow);} to{text-shadow:0 0 50px var(--primary-glow),0 0 80px rgba(255,77,109,.4);} }
+        .reply-from { font-size:.85rem; color:rgba(255,255,255,.3); margin-top:1.5rem; letter-spacing:1.5px; text-transform:uppercase; }
+        .reply-close-btn { margin-top:2rem; background:transparent; border:1px solid rgba(255,77,109,.4); color:rgba(255,255,255,.6); padding:.7rem 2rem; border-radius:50px; cursor:pointer; font-family:'Outfit',sans-serif; font-size:.9rem; transition:all .3s ease; }
+        .reply-close-btn:hover,.reply-close-btn:focus { background:rgba(255,77,109,.1); border-color:var(--primary); color:#fff; outline:2px solid var(--primary); }
+
+        /* === ENHANCED STEP EXIT === */
+        .message-step.exit { opacity:0; transform:translate(-50%,-62%) scale(.93); filter:blur(4px); }
+
+        /* === REDUCED MOTION === */
+        @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+
+        /* === UPDATED MOBILE === */
+        @media (max-width:600px) {
+            .card { padding:2rem 1.2rem; width:92%; border-radius:20px; }
+            h1 { font-size:2.5rem; } .subtitle { font-size:1rem; margin-bottom:1.2rem; }
+            .btn { padding:1rem 1.5rem; font-size:1rem; width:100%; }
+            .scanner-container { width:120px; height:120px; margin:1.2rem auto; }
+            .scanner-icon { font-size:2.8rem; }
+            .social-share { gap:.8rem; flex-wrap:wrap; justify-content:center; }
+            .social-btn { width:46px; height:46px; } .social-btn svg { width:20px; height:20px; }
+            .env-wrap { width:220px; height:168px; }
+            .env-body { width:220px; } .env-flap { width:220px; }
+            .env-flap::before,.env-body::before,.env-body::after { border-left-width:110px; border-right-width:110px; }
+            .progress-dots { display:none; }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Star + Confetti Canvases -->
+    <canvas id="starCanvas" aria-hidden="true"></canvas>
+    <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+    <!-- Progress Bar -->
+    <div class="prog-wrap" id="progWrap" aria-hidden="true"><div class="prog-fill" id="progFill"></div></div>
 
     <!-- Ambient background glow -->
     <div class="ambient-glow"></div>
@@ -598,516 +665,596 @@
     <!-- Floating Particles -->
     <div class="hearts-container" id="hearts" aria-hidden="true"></div>
 
+    <!-- ACT 0: Envelope Screen -->
+    <section id="envelopeScreen" aria-label="A letter for you. Tap to open.">
+        <p class="env-to">A letter for <span class="partner-name">Mumu</span>...</p>
+        <div class="env-wrap" id="envelopeBtn" tabindex="0" role="button" aria-label="Open the envelope">
+            <div class="env-flap" id="envFlap"></div>
+            <div class="env-body">
+                <div class="env-letter" id="envLetter">With all my love â¤ï¸</div>
+            </div>
+            <div class="wax-seal" id="waxSeal" aria-hidden="true">ðŸŒ¸</div>
+        </div>
+        <p class="env-hint">tap to open âœ¨</p>
+    </section>
+
     <div class="container">
 
-        <!-- Opening Screen -->
+        <!-- ACT 1: Intro Card -->
         <main class="card" id="introCard">
             <h1>To My <span class="partner-name">Mumu</span></h1>
             <p class="subtitle">I made a little something just for you, my love. Are you ready to see it?</p>
-            <button class="btn" id="startBtn" aria-label="Open the message">Open Your Surprise ✨</button>
+            <button class="btn" id="startBtn" aria-label="Open the message">Open Your Surprise âœ¨</button>
         </main>
 
-        <!-- Interactive Journey Screens -->
+        <!-- Journey Screens -->
         <div id="journeyContainer" class="hidden">
 
-            <!-- Message 1 -->
-            <div class="card message-step" id="step1">
-                <h1>My Everything ❤️</h1>
-                <p class="subtitle">From the moment you came into my life, you made it heaven. Your smile is the only
-                    sunshine I ever need.</p>
-                <button class="btn next-btn" data-next="step2" aria-label="Go to next message">Next 💖</button>
-                <div class="progress-dots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+            <!-- ACT 2: My Everything + Scratch Reveal -->
+            <div class="card message-step" id="step1" role="region" aria-label="Message 1 of 6">
+                <h1>My Everything â¤ï¸</h1>
+                <p class="subtitle">From the moment you came into my life, you made it heaven. Your smile is the only sunshine I ever need.</p>
+                <div class="scratch-wrap" aria-label="Scratch to reveal a hidden message">
+                    <div class="scratch-msg" id="scratchMsg" aria-live="polite">P.S. You are my greatest adventure, and I would choose you in every lifetime. ðŸŒ¹</div>
+                    <canvas id="scratchCanvas" role="img" aria-label="Scratch here to reveal a secret message"></canvas>
                 </div>
+                <p class="scratch-hint" aria-hidden="true">âœ¨ scratch to reveal a secret...</p>
+                <button class="btn next-btn" data-next="step2" aria-label="Go to next message" style="margin-top:1.2rem">Next ðŸ’–</button>
             </div>
 
-            <!-- Message 2 -->
-            <div class="card message-step" id="step2">
-                <h1>My Wishing Star ✨</h1>
-                <p class="subtitle">Every single day, my greatest wish is simply to <span class="highlight">grow old
-                        with you</span>. Through every laugh, every tear, and every beautiful moment.</p>
-                <button class="btn next-btn" data-next="step3" aria-label="Go to next message">Next 🌹</button>
-                <div class="progress-dots">
-                    <div class="dot"></div>
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                </div>
+            <!-- ACT 3: Wishing Star (with constellation) -->
+            <div class="card message-step" id="step2" role="region" aria-label="Message 2 of 6">
+                <h1>My Wishing Star âœ¨</h1>
+                <p class="subtitle">Every single day, my greatest wish is simply to <span class="highlight">grow old with you</span>. Through every laugh, every tear, and every beautiful moment.</p>
+                <button class="btn next-btn" data-next="step3" aria-label="Go to next message">Next ðŸŒ¹</button>
+                <div class="progress-dots"><div class="dot"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
             </div>
 
-            <!-- Message 3 (Final) -->
-            <div class="card message-step" id="step3">
-                <div class="final-heart">💖</div>
+            <!-- ACT 4: Our Timeline (NEW) -->
+            <div class="card message-step" id="step3" role="region" aria-label="Message 3 of 6">
+                <h1>Our Story ðŸ“–</h1>
+                <p class="subtitle" style="margin-bottom:1rem">Every chapter with you is my favourite.</p>
+                <div class="timeline" id="timeline" aria-label="Our love timeline">
+                    <div class="tl-item" data-idx="0">
+                        <div class="tl-dot" aria-hidden="true">âœ¨</div>
+                        <div class="tl-content">
+                            <div class="tl-label" id="tl-label-0">The day our story began</div>
+                            <div class="tl-date" id="tl-date-0">The beginning</div>
+                        </div>
+                    </div>
+                    <div class="tl-item" data-idx="1">
+                        <div class="tl-dot" aria-hidden="true">ðŸ’–</div>
+                        <div class="tl-content">
+                            <div class="tl-label" id="tl-label-1">When I knew you were the one</div>
+                            <div class="tl-date" id="tl-date-1">A beautiful day</div>
+                        </div>
+                    </div>
+                    <div class="tl-item" data-idx="2">
+                        <div class="tl-dot" aria-hidden="true">ðŸŒ¸</div>
+                        <div class="tl-content">
+                            <div class="tl-label" id="tl-label-2">Every single day with you</div>
+                            <div class="tl-date" id="tl-date-2">Today & forever</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn next-btn" data-next="step4" aria-label="Go to next message" style="margin-top:.5rem">Next ðŸ’Œ</button>
+            </div>
+
+            <!-- ACT 5: Forever Yours + Ink Typewriter -->
+            <div class="card message-step" id="step4" role="region" aria-label="Message 4 of 6">
+                <div class="final-heart">ðŸ’–</div>
                 <h1>Forever Yours</h1>
-                <p class="subtitle">Thank you for being my home, <span class="partner-name">Mumu</span>. I love you endlessly, today, tomorrow, and for
-                    all the days to come.</p>
-                <button class="btn next-btn" data-next="step4" aria-label="Seal the promise">Seal Our Promise ✨</button>
-                <div class="progress-dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot active"></div>
-                </div>
+                <div class="ink-text" id="inkText" aria-live="polite" aria-label="A love note being written"></div>
+                <button class="btn next-btn" id="inkNextBtn" data-next="step5" aria-label="Seal the promise" style="margin-top:1.5rem;opacity:0;pointer-events:none;transition:opacity .5s ease">Seal Our Promise âœ¨</button>
             </div>
 
-            <!-- Step 4 (The Interactive Hold) -->
-            <div class="card message-step" id="step4">
+            <!-- ACT 6: Seal the Promise (Scanner) -->
+            <div class="card message-step" id="step5" role="region" aria-label="Message 5 of 6">
                 <h1>A Final Promise</h1>
-                <p class="subtitle">Press and hold the heart to officially seal our love forever.</p>
-                
-                <div class="scanner-container" id="scannerBtn">
-                    <svg class="scanner-ring" viewBox="0 0 150 150">
+                <p class="subtitle">Press and hold the heart to seal our love forever.</p>
+                <div class="scanner-container" id="scannerBtn" tabindex="0" role="button" aria-label="Hold to seal the promise">
+                    <svg class="scanner-ring" viewBox="0 0 150 150" aria-hidden="true">
                         <circle class="bg-ring" cx="75" cy="75" r="70"></circle>
                         <circle class="progress-ring" cx="75" cy="75" r="70" id="progressRing"></circle>
                     </svg>
-                    <div class="scanner-icon">💖</div>
+                    <div class="scanner-icon" aria-hidden="true">ðŸ’–</div>
                 </div>
-                
-                <p class="subtitle" style="font-size: 0.9rem; margin-top: 1rem;">Hold until the ring fills...</p>
+                <p class="subtitle" style="font-size:.9rem;margin-top:1rem">Hold until the ring fills...</p>
             </div>
 
-            <!-- Step 5 (The Grand Finale) -->
-            <div class="card message-step" id="step5">
-                <div class="final-heart" style="font-size: 5.5rem; animation: pulse 2s infinite;">💍</div>
-                <h1 style="font-size: 3.5rem;">Promise Sealed!</h1>
-                <p class="subtitle" style="margin-bottom: 1.5rem;">It's official. You are officially stuck with me for the rest of eternity. I am the luckiest person alive to have won the ultimate jackpot: You.</p>
-                
-                <p style="font-size: 1.1rem; color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;">Brag to the world:</p>
+            <!-- ACT 7: Grand Finale + Write Back -->
+            <div class="card message-step" id="step6" role="region" aria-label="Grand finale">
+                <div class="final-heart" style="font-size:5rem;animation:pulse 2s infinite" aria-hidden="true">ðŸ’</div>
+                <h1 style="font-size:3rem">Promise Sealed!</h1>
+                <p class="subtitle" style="margin-bottom:1.2rem">You are officially stuck with me for the rest of eternity. I am the luckiest person alive to have won the ultimate jackpot: <strong>You</strong>.</p>
+
+                <p style="font-size:1rem;color:var(--primary);font-weight:600;margin-bottom:.5rem">Brag to the world:</p>
                 <div class="social-share">
-                    <a href="#" class="social-btn fb" data-tooltip="Facebook" id="shareFb" aria-label="Share to Facebook">
-                        <svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn ig" data-tooltip="Instagram" id="shareIg" aria-label="Share to Instagram">
-                        <svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn wa" data-tooltip="WhatsApp" id="shareWa" aria-label="Share to WhatsApp">
-                        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.7 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 13.96C16.31 13.81 15.08 13.2 14.85 13.12C14.62 13.04 14.45 13 14.28 13.26C14.11 13.5 13.64 14.11 13.5 14.27C13.36 14.44 13.21 14.46 12.96 14.33C12.71 14.2 11.89 13.93 10.93 13.08C10.19 12.42 9.69 11.58 9.55 11.33C9.4 11.08 9.53 10.94 9.66 10.82C9.77 10.7 9.9 10.53 10.03 10.39C10.15 10.25 10.2 10.14 10.28 9.97C10.36 9.8 10.32 9.65 10.26 9.53C10.2 9.4 9.7 8.16 9.49 7.65C9.28 7.16 9.07 7.22 8.93 7.22C8.8 7.22 8.63 7.22 8.47 7.22Z"/></svg>
-                    </a>
-                    <a href="#" class="social-btn link" data-tooltip="Copy Link" id="shareLink" aria-label="Copy Link">
-                        <svg viewBox="0 0 24 24"><path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3 11.96 18.17 11.14 17.89 10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z"/></svg>
-                    </a>
+                    <a href="#" class="social-btn fb" data-tooltip="Facebook" id="shareFb" aria-label="Share to Facebook"><svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg></a>
+                    <a href="#" class="social-btn ig" data-tooltip="Instagram" id="shareIg" aria-label="Share to Instagram"><svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"/></svg></a>
+                    <a href="#" class="social-btn wa" data-tooltip="WhatsApp" id="shareWa" aria-label="Share to WhatsApp"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.7 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M8.53 7.33C8.37 7.33 8.1 7.39 7.87 7.64C7.65 7.89 7 8.5 7 9.71C7 10.93 7.89 12.1 8 12.27C8.14 12.44 9.76 14.94 12.25 16C12.84 16.27 13.3 16.42 13.66 16.53C14.25 16.72 14.79 16.69 15.22 16.63C15.7 16.56 16.68 16.03 16.89 15.45C17.1 14.87 17.1 14.38 17.04 14.27C16.97 14.17 16.81 14.11 16.56 13.96C16.31 13.81 15.08 13.2 14.85 13.12C14.62 13.04 14.45 13 14.28 13.26C14.11 13.5 13.64 14.11 13.5 14.27C13.36 14.44 13.21 14.46 12.96 14.33C12.71 14.2 11.89 13.93 10.93 13.08C10.19 12.42 9.69 11.58 9.55 11.33C9.4 11.08 9.53 10.94 9.66 10.82C9.77 10.7 9.9 10.53 10.03 10.39C10.15 10.25 10.2 10.14 10.28 9.97C10.36 9.8 10.32 9.65 10.26 9.53C10.2 9.4 9.7 8.16 9.49 7.65C9.28 7.16 9.07 7.22 8.93 7.22C8.8 7.22 8.63 7.22 8.47 7.22Z"/></svg></a>
+                    <a href="#" class="social-btn link" data-tooltip="Copy Link" id="shareLink" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3 11.96 18.17 11.14 17.89 10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z"/></svg></a>
                 </div>
-                
-                <a href="index.html" style="display: inline-block; margin-top: 2.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.95rem; border-bottom: 1px dashed var(--glass-border); padding-bottom: 2px; transition: color 0.3s ease; opacity: 0.8;" onmouseover="this.style.color='var(--primary)'; this.style.opacity='1'" onmouseout="this.style.color='var(--text-muted)'; this.style.opacity='0.8'">✨ Create your own Bloomumu ✨</a>
+
+                <!-- Write Back -->
+                <div class="writeback-section">
+                    <p>Write back to <span class="sender-name">me</span>... ðŸ’Œ</p>
+                    <textarea id="replyText" placeholder="Type your reply here..." rows="3" aria-label="Write your reply"></textarea>
+                    <button id="sendReplyBtn" aria-label="Send your reply">Send My Reply ðŸ’–</button>
+                </div>
+
+                <a href="index.html" style="display:inline-block;margin-top:1.5rem;color:var(--text-muted);text-decoration:none;font-size:.9rem;border-bottom:1px dashed var(--glass-border);padding-bottom:2px;transition:color .3s ease;opacity:.7" onmouseover="this.style.color='var(--primary)';this.style.opacity='1'" onmouseout="this.style.color='var(--text-muted)';this.style.opacity='.7'">âœ¨ Create your own Bloomumu âœ¨</a>
             </div>
 
         </div>
     </div>
-    
-    <div class="toast-msg" id="toastMsg"></div>
+
+    <!-- Reply Full-Screen Overlay -->
+    <div id="replyOverlay" role="dialog" aria-modal="true" aria-label="Your reply">
+        <div class="reply-words" id="replyWords" aria-live="polite"></div>
+        <p class="reply-from">â€” <span class="partner-name">Mumu</span>, with love</p>
+        <button class="reply-close-btn" id="closeReplyBtn" aria-label="Close reply and return">Close âœ•</button>
+    </div>
+
+    <div class="toast-msg" id="toastMsg" role="alert" aria-live="assertive"></div>
 
     <!-- Creator Branding -->
     <div class="footer-branding">
         <a href="https://www.linkedin.com/in/hello-ehsan/" target="_blank" class="creator-link">
-            <span>Crafted with ❤️ by <strong>Ehsanul Islam Sajjad</strong></span>
+            <span>Crafted with â¤ï¸ by <strong>Ehsanul Islam Sajjad</strong></span>
         </a>
         <div class="footer-tag">
-            🔒 Privacy First & SSL Secured
+            ðŸ”’ Privacy First &amp; SSL Secured
         </div>
     </div>
 
 
 
+
     <script>
-        // --- Dynamic URL Parameter Handling ---
+    <script>
+        // ===================== URL PARAMS =====================
         const urlParams = new URLSearchParams(window.location.search);
-        let partnerName = urlParams.get('to');
-        
-        if (partnerName) {
-            // Capitalize first letter
-            partnerName = partnerName.charAt(0).toUpperCase() + partnerName.slice(1);
-            document.title = `For ${partnerName}, With Love`;
-            
-            // Replace text
-            const nameSpans = document.querySelectorAll('.partner-name');
-            nameSpans.forEach(span => {
-                span.innerText = partnerName;
-            });
-        }
+        const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+        const partnerName = cap(urlParams.get('to')) || 'Mumu';
+        const senderName  = cap(urlParams.get('from')) || 'Ehsanul';
 
-        // --- Web Audio API Sounds ---
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const audioCtx = new AudioContext();
+        document.title = `For ${partnerName}, With Love ðŸŒ¸`;
+        document.querySelectorAll('.partner-name').forEach(el => el.textContent = partnerName);
+        document.querySelectorAll('.sender-name').forEach(el => el.textContent = senderName);
 
-        function playClickSound() {
-            if(audioCtx.state === 'suspended') audioCtx.resume();
-
-            // Haptic Feedback for Mobile
-            if (navigator.vibrate) {
-                navigator.vibrate(12); 
-            }
-
-            const osc = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            
-            // A crisp, minimal "tik" sound (like an iPhone UI tap)
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(800, audioCtx.currentTime); 
-            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.03); 
-            
-            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
-            
-            osc.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.04);
-        }
-
-        function playRevealSound() {
-            if(audioCtx.state === 'suspended') audioCtx.resume();
-            // A beautiful, rolling ethereal harp/bell sound (A Major 9)
-            const notes = [440, 554.37, 659.25, 880, 1108.73, 1318.51]; 
-            
-            notes.forEach((freq, i) => {
-                const osc = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                
-                osc.type = 'sine';
-                osc.frequency.value = freq;
-                
-                const startTime = audioCtx.currentTime + (i * 0.08); // Roll the chord
-                
-                gainNode.gain.setValueAtTime(0, startTime);
-                gainNode.gain.linearRampToValueAtTime(0.1, startTime + 0.1);
-                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + 2.0); // Long romantic tail
-                
-                osc.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                
-                osc.start(startTime);
-                osc.stop(startTime + 2.1);
-            });
-        }
-
-        let holdOsc1, holdOsc2;
-        let holdGain;
-        function playHoldSound() {
-            if(audioCtx.state === 'suspended') audioCtx.resume();
-            if(holdOsc1) return; // Prevent multiple
-            
-            holdOsc1 = audioCtx.createOscillator();
-            holdOsc2 = audioCtx.createOscillator();
-            holdGain = audioCtx.createGain();
-            
-            // Lush, romantic synth pad with detuned saws and a sweeping filter
-            holdOsc1.type = 'sawtooth';
-            holdOsc2.type = 'sawtooth';
-            holdOsc1.frequency.setValueAtTime(110, audioCtx.currentTime); // A2
-            holdOsc2.frequency.setValueAtTime(111.5, audioCtx.currentTime); // Detuned for lush warmth
-            
-            // Pitch sweeps up to build anticipation
-            holdOsc1.frequency.linearRampToValueAtTime(220, audioCtx.currentTime + 2.5);
-            holdOsc2.frequency.linearRampToValueAtTime(223, audioCtx.currentTime + 2.5);
-            
-            const filter = audioCtx.createBiquadFilter();
-            filter.type = 'lowpass';
-            filter.frequency.setValueAtTime(300, audioCtx.currentTime); // Start muffled
-            filter.frequency.exponentialRampToValueAtTime(2500, audioCtx.currentTime + 2.5); // Swell brighter
-            
-            holdGain.gain.setValueAtTime(0, audioCtx.currentTime);
-            holdGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.5); // Soft fade in
-            
-            holdOsc1.connect(filter);
-            holdOsc2.connect(filter);
-            filter.connect(holdGain);
-            holdGain.connect(audioCtx.destination);
-            
-            holdOsc1.start();
-            holdOsc2.start();
-        }
-
-        function stopHoldSound() {
-            if(holdGain && holdOsc1) {
-                holdGain.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.3); // Gentle romantic fade out
-                holdOsc1.stop(audioCtx.currentTime + 0.4);
-                holdOsc2.stop(audioCtx.currentTime + 0.4);
-                holdOsc1 = null;
-                holdOsc2 = null;
-            }
-        }
-
-        // Attach "Tik" to ALL buttons and links globally
-        document.addEventListener('touchstart', () => {
-            if(audioCtx.state === 'suspended') audioCtx.resume();
-        }, { once: true });
-
-        document.querySelectorAll('button, .btn, .social-btn, .action-link').forEach(el => {
-            el.addEventListener('click', () => {
-                if(el.id !== 'scannerBtn') { // Scanner has its own sounds
-                    playClickSound();
-                }
-            });
+        // Timeline params
+        const tl = [
+            { label: urlParams.get('l1') || 'The day our story began',       date: urlParams.get('d1') || 'Once upon a time...' },
+            { label: urlParams.get('l2') || 'When I knew you were the one',  date: urlParams.get('d2') || 'A beautiful day' },
+            { label: urlParams.get('l3') || 'Every single day with you',     date: urlParams.get('d3') || 'Today & forever' },
+        ];
+        tl.forEach((item, i) => {
+            const lEl = document.getElementById(`tl-label-${i}`);
+            const dEl = document.getElementById(`tl-date-${i}`);
+            if (lEl) lEl.textContent = item.label;
+            if (dEl) dEl.textContent = item.date;
         });
 
-        // Particle System (Floating Emojis/Hearts)
-        function createParticles() {
-            const container = document.getElementById('hearts');
-            const particles = ['❤️', '💖', '✨', '🌸', '🥂', '💕'];
-            const particleCount = window.innerWidth > 768 ? 35 : 15;
+        // ===================== AUDIO =====================
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioCtx();
+        const resumeAudio = () => { if (audioCtx.state === 'suspended') audioCtx.resume(); };
+        document.addEventListener('touchstart', resumeAudio, { once: true });
+        document.addEventListener('click', resumeAudio, { once: true });
 
-            for (let i = 0; i < particleCount; i++) {
-                setTimeout(() => {
-                    spawnParticle(container, particles);
-                }, Math.random() * 8000);
-            }
+        function vibrate(ms) { if (navigator.vibrate) navigator.vibrate(ms); }
+
+        function playTik() {
+            resumeAudio(); vibrate(12);
+            const osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.03);
+            g.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            g.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
+            osc.connect(g); g.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.04);
         }
 
-        function spawnParticle(container, particles) {
-            const el = document.createElement('div');
-            el.className = 'heart';
-            el.innerText = particles[Math.floor(Math.random() * particles.length)];
-            el.style.left = Math.random() * 100 + 'vw';
-
-            // Randomize animation duration based on screen height
-            const duration = Math.random() * 12 + 10;
-            el.style.animationDuration = duration + 's';
-
-            // Randomize size
-            el.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-
-            // Randomize starting delay slightly for variety
-            el.style.animationDelay = (Math.random() * 2) + 's';
-
-            container.appendChild(el);
-
-            // Clean up and respawn
-            el.addEventListener('animationend', () => {
-                el.remove();
-                spawnParticle(container, particles);
+        function playReveal() {
+            resumeAudio();
+            [440,554,659,880,1109,1319].forEach((f, i) => {
+                const osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+                const t = audioCtx.currentTime + i * 0.08;
+                osc.frequency.value = f; g.gain.setValueAtTime(0, t);
+                g.gain.linearRampToValueAtTime(0.1, t + 0.1);
+                g.gain.exponentialRampToValueAtTime(0.001, t + 2);
+                osc.connect(g); g.connect(audioCtx.destination); osc.start(t); osc.stop(t + 2.1);
             });
         }
 
-        // Initialize particles
+        let holdOsc1, holdOsc2, holdGainNode;
+        function playHold() {
+            resumeAudio(); if (holdOsc1) return;
+            holdOsc1 = audioCtx.createOscillator(); holdOsc2 = audioCtx.createOscillator();
+            holdGainNode = audioCtx.createGain();
+            holdOsc1.type = holdOsc2.type = 'sawtooth';
+            holdOsc1.frequency.setValueAtTime(110, audioCtx.currentTime);
+            holdOsc2.frequency.setValueAtTime(111.5, audioCtx.currentTime);
+            holdOsc1.frequency.linearRampToValueAtTime(220, audioCtx.currentTime + 2.5);
+            holdOsc2.frequency.linearRampToValueAtTime(223, audioCtx.currentTime + 2.5);
+            const filt = audioCtx.createBiquadFilter(); filt.type = 'lowpass';
+            filt.frequency.setValueAtTime(300, audioCtx.currentTime);
+            filt.frequency.exponentialRampToValueAtTime(2500, audioCtx.currentTime + 2.5);
+            holdGainNode.gain.setValueAtTime(0, audioCtx.currentTime);
+            holdGainNode.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.5);
+            holdOsc1.connect(filt); holdOsc2.connect(filt); filt.connect(holdGainNode);
+            holdGainNode.connect(audioCtx.destination); holdOsc1.start(); holdOsc2.start();
+        }
+        function stopHold() {
+            if (!holdOsc1) return;
+            holdGainNode.gain.linearRampToValueAtTime(0.001, audioCtx.currentTime + 0.3);
+            holdOsc1.stop(audioCtx.currentTime + 0.4); holdOsc2.stop(audioCtx.currentTime + 0.4);
+            holdOsc1 = holdOsc2 = null;
+        }
+
+        document.addEventListener('click', e => { if (e.target.closest('button,.btn,.social-btn,a')) playTik(); });
+
+        // ===================== PARTICLES =====================
+        function createParticles() {
+            const cont = document.getElementById('hearts');
+            const emojis = ['â¤ï¸','ðŸ’–','âœ¨','ðŸŒ¸','ðŸ’•'];
+            const n = window.innerWidth > 768 ? 25 : 12;
+            for (let i = 0; i < n; i++) setTimeout(() => spawnParticle(cont, emojis), Math.random() * 6000);
+        }
+        function spawnParticle(cont, emojis) {
+            const el = document.createElement('div'); el.className = 'heart';
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 12 + 10) + 's';
+            el.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+            el.style.animationDelay = (Math.random() * 2) + 's';
+            cont.appendChild(el);
+            el.addEventListener('animationend', () => { el.remove(); spawnParticle(cont, emojis); });
+        }
         createParticles();
 
-        // UI Journey Flow Logic
+        // ===================== ENVELOPE (ACT 0) =====================
+        const envScreen = document.getElementById('envelopeScreen');
+        const envFlap   = document.getElementById('envFlap');
+        const waxSeal   = document.getElementById('waxSeal');
+        const envLetter = document.getElementById('envLetter');
         const introCard = document.getElementById('introCard');
+
+        // Peek the letter on load
+        setTimeout(() => envLetter && envLetter.classList.add('peeking'), 800);
+
+        function openEnvelope() {
+            playTik(); vibrate([30, 20, 30]);
+            waxSeal.classList.add('cracking');
+            setTimeout(() => envFlap.classList.add('open'), 300);
+            setTimeout(() => {
+                envScreen.classList.add('closing');
+                setTimeout(() => { envScreen.style.display = 'none'; }, 800);
+            }, 900);
+        }
+
+        const envelopeBtn = document.getElementById('envelopeBtn');
+        envelopeBtn.addEventListener('click', openEnvelope);
+        envelopeBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); } });
+
+        // ===================== PROGRESS BAR =====================
+        const progWrap = document.getElementById('progWrap');
+        const progFill = document.getElementById('progFill');
+        const STEPS = ['step1','step2','step3','step4','step5','step6'];
+        function setProgress(stepId) {
+            const idx = STEPS.indexOf(stepId);
+            if (idx < 0) return;
+            progWrap.classList.add('visible');
+            progFill.style.width = ((idx + 1) / STEPS.length * 100) + '%';
+        }
+
+        // ===================== STEP NAVIGATION =====================
         const journeyContainer = document.getElementById('journeyContainer');
         const startBtn = document.getElementById('startBtn');
-        const nextBtns = document.querySelectorAll('.next-btn');
-        const restartBtn = document.getElementById('restartBtn');
 
-        // Start Journey
         startBtn.addEventListener('click', () => {
-            // Animate intro card out
-            introCard.style.opacity = '0';
-            introCard.style.transform = 'translateY(-40px) scale(0.95)';
+            introCard.style.opacity = '0'; introCard.style.transform = 'translateY(-40px) scale(.95)';
             introCard.style.pointerEvents = 'none';
-
             setTimeout(() => {
                 introCard.classList.add('hidden');
                 journeyContainer.classList.remove('hidden');
-
-                // Show first step
-                requestAnimationFrame(() => {
-                    document.getElementById('step1').classList.add('active');
-                });
+                requestAnimationFrame(() => goToStep('step1', true));
             }, 600);
         });
 
-        // Step Navigation
-        nextBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const currentStep = e.target.closest('.message-step');
-                const nextStepId = e.target.getAttribute('data-next');
-                const nextStep = document.getElementById(nextStepId);
+        function goToStep(nextId, first = false) {
+            const nextEl = document.getElementById(nextId);
+            if (!nextEl) return;
+            // Exit current active
+            const cur = journeyContainer.querySelector('.message-step.active');
+            if (cur) {
+                cur.classList.remove('active'); cur.classList.add('exit');
+                setTimeout(() => { cur.classList.add('hidden'); cur.classList.remove('exit'); }, 600);
+            }
+            setTimeout(() => {
+                nextEl.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    nextEl.classList.add('active');
+                    setProgress(nextId);
+                    onStepEnter(nextId);
+                });
+            }, first ? 0 : 500);
+        }
 
-                // Exit current step
-                currentStep.classList.remove('active');
-                currentStep.classList.add('exit');
-
-                setTimeout(() => {
-                    currentStep.classList.add('hidden'); // Optional: hide completely from DOM flow
-                    nextStep.classList.remove('hidden');
-
-                    // Enter next step
-                    requestAnimationFrame(() => {
-                        nextStep.classList.add('active');
-                        nextStep.classList.remove('exit');
-                    });
-                }, 500); // Wait for exit animation
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const nxt = e.currentTarget.dataset.next;
+                if (nxt) goToStep(nxt);
             });
         });
 
-        // --- Interactive Hold Logic ---
-        const scannerBtn = document.getElementById('scannerBtn');
-        const progressRing = document.getElementById('progressRing');
-        const circumference = 2 * Math.PI * 70; // r=70
-        
-        let holdTimer;
-        let progress = 0;
-        let isHolding = false;
-        
-        if (progressRing) {
-            progressRing.style.strokeDasharray = `${circumference} ${circumference}`;
-            progressRing.style.strokeDashoffset = circumference;
+        // ===================== STEP ENTER HOOKS =====================
+        function onStepEnter(id) {
+            if (id === 'step1') initScratch();
+            if (id === 'step2') showStars();
+            else hideStars();
+            if (id === 'step3') animateTimeline();
+            if (id === 'step4') startInkWriter();
+            if (id === 'step6') triggerConfetti();
         }
 
+        // ===================== STAR CONSTELLATION (ACT 3) =====================
+        const starCanvas = document.getElementById('starCanvas');
+        const starCtx    = starCanvas.getContext('2d');
+        let starAnim;
+
+        function showStars() {
+            starCanvas.width  = window.innerWidth;
+            starCanvas.height = window.innerHeight;
+            starCanvas.classList.add('visible');
+            const stars = Array.from({length: 120}, () => ({
+                x: Math.random() * starCanvas.width,
+                y: Math.random() * starCanvas.height,
+                r: Math.random() * 1.5 + 0.3,
+                a: Math.random(),
+                speed: Math.random() * 0.008 + 0.003
+            }));
+            let shoot = { x: -100, y: -100, vx: 0, vy: 0, life: 0 };
+            let shootTimer = 0;
+            function drawStars() {
+                starCtx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+                stars.forEach(s => {
+                    s.a += s.speed; if (s.a > 1) s.a = 0;
+                    starCtx.beginPath(); starCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    starCtx.fillStyle = `rgba(255,220,240,${s.a})`;
+                    starCtx.fill();
+                });
+                // Shooting star
+                shootTimer++;
+                if (shootTimer > 150) { shootTimer = 0; shoot = { x: Math.random() * starCanvas.width * 0.5, y: Math.random() * starCanvas.height * 0.4, vx: 4 + Math.random() * 3, vy: 2 + Math.random() * 2, life: 60 }; }
+                if (shoot.life > 0) {
+                    starCtx.beginPath(); starCtx.moveTo(shoot.x, shoot.y);
+                    shoot.x += shoot.vx; shoot.y += shoot.vy; shoot.life--;
+                    starCtx.lineTo(shoot.x, shoot.y);
+                    starCtx.strokeStyle = `rgba(255,200,220,${shoot.life / 60})`; starCtx.lineWidth = 2; starCtx.stroke();
+                }
+                starAnim = requestAnimationFrame(drawStars);
+            }
+            drawStars();
+        }
+
+        function hideStars() {
+            starCanvas.classList.remove('visible');
+            cancelAnimationFrame(starAnim);
+        }
+
+        // ===================== SCRATCH REVEAL (ACT 2) =====================
+        function initScratch() {
+            const canvas = document.getElementById('scratchCanvas');
+            if (!canvas || canvas.dataset.init) return;
+            canvas.dataset.init = '1';
+            const wrap = canvas.parentElement;
+            canvas.width  = wrap.offsetWidth;
+            canvas.height = wrap.offsetHeight;
+            const ctx = canvas.getContext('2d');
+            // Fill with gradient fog
+            const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            grad.addColorStop(0, '#2a1b3d'); grad.addColorStop(1, '#1a0f2e');
+            ctx.fillStyle = grad; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Hint text
+            ctx.fillStyle = 'rgba(255,77,109,0.5)'; ctx.font = 'bold 14px Outfit, sans-serif';
+            ctx.textAlign = 'center'; ctx.fillText('âœ¨ Scratch here âœ¨', canvas.width / 2, canvas.height / 2);
+
+            let painting = false;
+            function scratch(x, y) {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath(); ctx.arc(x, y, 28, 0, Math.PI * 2); ctx.fill();
+                // Check if mostly revealed
+                const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let clear = 0;
+                for (let i = 3; i < data.length; i += 4) if (data[i] < 128) clear++;
+                if (clear / (canvas.width * canvas.height) > 0.5) {
+                    canvas.style.pointerEvents = 'none';
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    vibrate([20, 10, 20]);
+                }
+            }
+
+            const getPos = (e, rect) => {
+                const src = e.touches ? e.touches[0] : e;
+                return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+            };
+            canvas.addEventListener('mousedown',  e => { painting = true; const r = canvas.getBoundingClientRect(); scratch(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mousemove',  e => { if (!painting) return; const r = canvas.getBoundingClientRect(); scratch(e.clientX - r.left, e.clientY - r.top); });
+            canvas.addEventListener('mouseup',    () => painting = false);
+            canvas.addEventListener('touchstart', e => { painting = true; const r = canvas.getBoundingClientRect(); const p = getPos(e, r); scratch(p.x, p.y); }, { passive: true });
+            canvas.addEventListener('touchmove',  e => { if (!painting) return; const r = canvas.getBoundingClientRect(); const p = getPos(e, r); scratch(p.x, p.y); }, { passive: true });
+            canvas.addEventListener('touchend',   () => painting = false);
+        }
+
+        // ===================== TIMELINE ANIMATION (ACT 4) =====================
+        function animateTimeline() {
+            const items = document.querySelectorAll('#step3 .tl-item');
+            items.forEach((el, i) => {
+                el.classList.remove('revealed');
+                setTimeout(() => el.classList.add('revealed'), 300 + i * 400);
+            });
+        }
+
+        // ===================== INK TYPEWRITER (ACT 5) =====================
+        const inkEl = document.getElementById('inkText');
+        const inkNextBtn = document.getElementById('inkNextBtn');
+        const inkMsg = `Thank you for being my home, ${partnerName}. I love you endlessly â€” today, tomorrow, and for all the days to come. You are my greatest adventure. ðŸŒ¸`;
+
+        function startInkWriter() {
+            if (!inkEl) return;
+            inkEl.innerHTML = '';
+            let i = 0;
+            const cursor = document.createElement('span'); cursor.className = 'ink-cursor'; inkEl.appendChild(cursor);
+            const interval = setInterval(() => {
+                if (i >= inkMsg.length) {
+                    clearInterval(interval);
+                    cursor.remove();
+                    if (inkNextBtn) { inkNextBtn.style.opacity = '1'; inkNextBtn.style.pointerEvents = 'auto'; }
+                    return;
+                }
+                cursor.insertAdjacentText('beforebegin', inkMsg[i++]);
+            }, 45);
+        }
+
+        // ===================== CONFETTI (ACT 7) =====================
+        const confCanvas = document.getElementById('confettiCanvas');
+        const confCtx    = confCanvas.getContext('2d');
+        let confPieces = [], confAnim;
+
+        function triggerConfetti() {
+            confCanvas.width = window.innerWidth; confCanvas.height = window.innerHeight;
+            const colors = ['#ff4d6d','#ff8fa3','#ffd6df','#ffb3c6','#fff0f3','#ffd700','#ff69b4'];
+            confPieces = Array.from({length: 120}, () => ({
+                x: Math.random() * confCanvas.width, y: Math.random() * confCanvas.height - confCanvas.height,
+                w: Math.random() * 10 + 5, h: Math.random() * 6 + 3,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                vx: (Math.random() - 0.5) * 3, vy: Math.random() * 3 + 1.5,
+                rot: Math.random() * 360, vr: (Math.random() - 0.5) * 8, opacity: 1
+            }));
+            animateConfetti();
+        }
+
+        function animateConfetti() {
+            confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+            confPieces = confPieces.filter(p => p.opacity > 0);
+            confPieces.forEach(p => {
+                p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.05;
+                if (p.y > confCanvas.height * 0.8) p.opacity -= 0.02;
+                confCtx.save(); confCtx.translate(p.x, p.y); confCtx.rotate(p.rot * Math.PI / 180);
+                confCtx.globalAlpha = p.opacity; confCtx.fillStyle = p.color;
+                confCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); confCtx.restore();
+            });
+            if (confPieces.length > 0) confAnim = requestAnimationFrame(animateConfetti);
+            else confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+        }
+
+        // ===================== SCANNER HOLD (ACT 6) =====================
+        const scannerBtn  = document.getElementById('scannerBtn');
+        const progressRing = document.getElementById('progressRing');
+        const circumference = 2 * Math.PI * 70;
+        let holdTimer, progress = 0, isHolding = false;
+        if (progressRing) { progressRing.style.strokeDasharray = `${circumference} ${circumference}`; progressRing.style.strokeDashoffset = circumference; }
+
         function startHold(e) {
-            e.preventDefault();
-            if (isHolding) return;
-            isHolding = true;
-            scannerBtn.style.transform = "scale(0.95)";
-            
-            playHoldSound();
-            
+            e.preventDefault ? e.preventDefault() : null;
+            if (isHolding) return; isHolding = true;
+            scannerBtn.style.transform = 'scale(.95)'; playHold();
             clearInterval(holdTimer);
             holdTimer = setInterval(() => {
-                progress += 1.2; // Speed of filling
-                
-                // Pulsating vibration while holding
-                if (navigator.vibrate && Math.floor(progress) % 10 === 0) {
-                    navigator.vibrate(5);
-                }
-
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(holdTimer);
-                    unlockHeart();
-                }
-                updateRing();
+                progress += 1.2;
+                if (navigator.vibrate && Math.floor(progress) % 10 === 0) navigator.vibrate(5);
+                if (progress >= 100) { progress = 100; clearInterval(holdTimer); unlockHeart(); }
+                if (progressRing) progressRing.style.strokeDashoffset = circumference - (progress / 100) * circumference;
             }, 30);
         }
 
         function endHold() {
-            isHolding = false;
-            scannerBtn.style.transform = "scale(1)";
-            clearInterval(holdTimer);
-            
-            stopHoldSound();
-            
-            // Deflate if not complete
+            isHolding = false; scannerBtn.style.transform = 'scale(1)';
+            clearInterval(holdTimer); stopHold();
             if (progress < 100) {
                 holdTimer = setInterval(() => {
-                    progress -= 4; // Deflate faster
-                    if (progress <= 0) {
-                        progress = 0;
-                        clearInterval(holdTimer);
-                    }
-                    updateRing();
+                    progress -= 4; if (progress <= 0) { progress = 0; clearInterval(holdTimer); }
+                    if (progressRing) progressRing.style.strokeDashoffset = circumference - (progress / 100) * circumference;
                 }, 20);
             }
         }
 
-        function updateRing() {
-            if(!progressRing) return;
-            const offset = circumference - (progress / 100) * circumference;
-            progressRing.style.strokeDashoffset = offset;
-        }
-
         function unlockHeart() {
-            stopHoldSound();
-            playRevealSound();
-            
-            // Remove event listeners so it doesn't trigger again
+            stopHold(); playReveal(); vibrate([50, 30, 80]);
             scannerBtn.removeEventListener('mousedown', startHold);
             scannerBtn.removeEventListener('touchstart', startHold);
-            
-            // Explode particles
-            const container = document.getElementById('hearts');
-            for (let i = 0; i < 40; i++) {
-                setTimeout(() => {
-                    spawnParticle(container, ['❤️', '💖', '💍', '✨']);
-                }, i * 30);
-            }
-            
-            // Move to step 5
-            const step4 = document.getElementById('step4');
-            const step5 = document.getElementById('step5');
-            
-            step4.classList.remove('active');
-            step4.classList.add('exit');
-            
-            setTimeout(() => {
-                step4.classList.add('hidden');
-                step5.classList.remove('hidden');
-                requestAnimationFrame(() => {
-                    step5.classList.add('active');
-                    step5.classList.remove('exit');
-                });
-            }, 600);
+            setTimeout(() => goToStep('step6'), 600);
         }
 
         if (scannerBtn) {
             scannerBtn.addEventListener('mousedown', startHold);
-            scannerBtn.addEventListener('touchstart', (e) => {
-                // Only prevent default if it's a multi-touch or we want to block scrolling ONLY on the heart
-                startHold(e);
-            }, { passive: true });
-            
-            window.addEventListener('mouseup', endHold);
-            window.addEventListener('touchend', endHold);
+            scannerBtn.addEventListener('touchstart', startHold, { passive: true });
+            scannerBtn.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && !isHolding) { e.preventDefault(); startHold(e); } });
+            scannerBtn.addEventListener('keyup',   () => endHold());
+            window.addEventListener('mouseup',    endHold);
+            window.addEventListener('touchend',   endHold);
             window.addEventListener('touchcancel', endHold);
-            
-            scannerBtn.addEventListener('contextmenu', (e) => {
-                e.preventDefault(); 
-            });
+            scannerBtn.addEventListener('contextmenu', e => e.preventDefault());
         }
 
-        // --- Social Share Logic ---
-        const shareFb = document.getElementById('shareFb');
-        const shareIg = document.getElementById('shareIg');
-        const shareWa = document.getElementById('shareWa');
-        const shareLink = document.getElementById('shareLink');
+        // ===================== SOCIAL SHARE =====================
         const toastMsg = document.getElementById('toastMsg');
-
         const shareUrl = encodeURIComponent(window.location.href);
-        const shareText = encodeURIComponent("Look at the sweet surprise I just got! My heart is melting 🥺❤️ check it out here: ");
+        const shareText = encodeURIComponent(`Look at this beautiful surprise I just received! ðŸ¥ºâ¤ï¸ `);
 
-        if(shareFb) {
-            shareFb.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400');
-            });
-        }
-
-        if(shareWa) {
-            shareWa.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.open(`https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}`, '_blank');
-            });
-        }
-
-        if(shareIg) {
-            shareIg.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Instagram doesn't have a direct web sharer for feed. We copy the link and notify.
-                copyToClipboard();
-                showToast("Link copied! Paste it in your Instagram bio or story ❤️");
-            });
-        }
-
-        if(shareLink) {
-            shareLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                copyToClipboard();
-                showToast("Link Copied Successfully! 🔗❤️");
-            });
+        function showToast(msg) {
+            if (!toastMsg) return;
+            toastMsg.textContent = msg; toastMsg.classList.add('show');
+            setTimeout(() => toastMsg.classList.remove('show'), 4000);
         }
 
         function copyToClipboard() {
-            const dummy = document.createElement('input');
-            const text = window.location.href;
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
+            if (navigator.clipboard) { navigator.clipboard.writeText(window.location.href); return; }
+            const inp = document.createElement('input'); document.body.appendChild(inp);
+            inp.value = window.location.href; inp.select(); document.execCommand('copy'); inp.remove();
         }
 
-        function showToast(msg) {
-            if(toastMsg) {
-                toastMsg.innerText = msg;
-                toastMsg.classList.add('show');
-                setTimeout(() => {
-                    toastMsg.classList.remove('show');
-                }, 4000);
-            }
+        const shareFb   = document.getElementById('shareFb');
+        const shareWa   = document.getElementById('shareWa');
+        const shareIg   = document.getElementById('shareIg');
+        const shareLink = document.getElementById('shareLink');
+
+        if (shareFb)   shareFb.addEventListener('click',   e => { e.preventDefault(); window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'width=600,height=400'); });
+        if (shareWa)   shareWa.addEventListener('click',   e => { e.preventDefault(); window.open(`https://api.whatsapp.com/send?text=${shareText}${shareUrl}`, '_blank'); });
+        if (shareIg)   shareIg.addEventListener('click',   e => { e.preventDefault(); copyToClipboard(); showToast('Link copied! Paste it in your Instagram story â¤ï¸'); });
+        if (shareLink) shareLink.addEventListener('click', e => { e.preventDefault(); copyToClipboard(); showToast('Link copied! ðŸ”—â¤ï¸'); });
+
+        // ===================== WRITE BACK REPLY (ACT 7) =====================
+        const sendReplyBtn  = document.getElementById('sendReplyBtn');
+        const replyOverlay  = document.getElementById('replyOverlay');
+        const replyWords    = document.getElementById('replyWords');
+        const closeReplyBtn = document.getElementById('closeReplyBtn');
+        const replyText     = document.getElementById('replyText');
+
+        if (sendReplyBtn) {
+            sendReplyBtn.addEventListener('click', () => {
+                const msg = replyText ? replyText.value.trim() : '';
+                if (!msg) { showToast('Write something first! ðŸ’Œ'); return; }
+                replyWords.textContent = `"${msg}"`;
+                replyOverlay.classList.add('visible');
+                vibrate([30, 20, 50]);
+                replyOverlay.focus();
+            });
         }
+
+        if (closeReplyBtn) {
+            closeReplyBtn.addEventListener('click', () => replyOverlay.classList.remove('visible'));
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && replyOverlay.classList.contains('visible')) {
+                replyOverlay.classList.remove('visible');
+            }
+        });
 
     </script>
+
 </body>
 
 </html>
