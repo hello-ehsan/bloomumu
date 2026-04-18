@@ -1,46 +1,37 @@
-# 🌸 Bloomumu: A Digital Love Letter
+# 🌸 Bloomumu
 
 > *"In the binary of life, you are the only code that matters."*
 
-**Bloomumu** is more than just a SaaS or a web app. It is a premium, interactive digital sanctuary designed to turn simple words into unforgettable romantic experiences. Crafted with passion, glassmorphism aesthetics, and haptic feedback, it serves as a bridge between the digital world and the deepest human emotions.
+**Bloomumu** is a small piece of my heart, woven into code. It's a simple way to say the things that matter most, wrapped in a digital surprise that feels as warm as a handwritten letter. I built this to turn simple words into a beautiful, interactive journey for the person who means the world to me.
 
 ---
 
-### 🚀 Experience the Magic
+### ✨ Experience the Surprise
 
-Ready to see it in action or create your own surprise? Use the links below:
+You can see the journey I made for Mumu, or use the tool to create a little magic for your own special someone:
 
-*   ✨ **[Launch the Generator](https://hello-ehsan.github.io/bloomumu/)** – Create a personalized magic link for your partner.
-*   💖 **[View a Sample Surprise](https://hello-ehsan.github.io/bloomumu/bloomumu.html?to=Mumu)** – See the interactive journey (dedicated to Mumu).
-
----
-
-### ✨ The Story Behind Bloomumu
-
-Born from a heartbeat and refined through code, Bloomumu was built as a dedicated tribute from **Ehsanul Islam Sajjad** to **Tasnim Bintay Anwar Mumu**. It is designed to capture the essence of a handwritten letter and the tactile thrill of a physical surprise, all within a sleek, modern browser interface.
-
-### 💎 Premium Features
-
-*   **Interactive Journey**: A step-by-step storytelling flow that leads to a grand finale.
-*   **Haptic "Seal the Promise"**: A mobile-first interactive scanner that vibrates and pulsates as you hold it to "seal" your love.
-*   **Aura & Particles**: A dynamic background of floating hearts and ambient glows that react to the user.
-*   **Magic Link Generator**: Instantly generate unique URLs to share with your loved ones.
-*   **Socially Optimized**: Beautiful OpenGraph previews that make the link look like a gift even before it's opened.
-
-### 🛠️ Tech Stack
-
-*   **Frontend Architecture**: Vanilla HTML5, CSS3 (Glassmorphism), and JavaScript.
-*   **Sensory Logic**: Web Audio API for UI sounds and Vibration API for haptic feedback.
-*   **Backend Hook**: Google Apps Script for serverless lead capture and storytelling logs.
-
-### 🚀 Getting Started
-
-1. **Clone the Heart**: Download this repository.
-2. **Personalize**: Update the messages in `bloomumu.html` to reflect your own story.
-3. **Deploy**: Host on GitHub Pages, Netlify, or Vercel in seconds.
+*   💖 **[See Mumu's Surprise](https://hello-ehsan.github.io/bloomumu/bloomumu.html?to=Mumu)** – Walk through the interactive journey.
+*   ✨ **[Make Your Own Magic](https://hello-ehsan.github.io/bloomumu/)** – Create a personalized link for your partner.
 
 ---
 
-*Created with ❤️ by Ehsanul Islam Sajjad*
+### 📖 The Story
 
-If you have a story to tell or want to collaborate, feel free to [reach me here](https://www.linkedin.com/in/hello-ehsan/).
+This project started with a heartbeat and a wish. It was created by **Ehsanul Islam Sajjad** for **Tasnim Bintay Anwar Mumu**—as a way to bridge the distance and share a promise that lasts forever. It's a reminder that even in a world of screens, love can be felt, touched, and celebrated.
+
+### 💖 What's Inside
+
+*   **A Journey Together**: A step-by-step story that builds anticipation and leads to a special moment.
+*   **A Promise Sealed**: A tactile heart scanner that vibrates and pulsates as you hold it, sealing a digital promise.
+*   **Magic in the Air**: Soft glows, floating hearts, and gentle sounds that react as you explore the page.
+*   **A Personal Gift**: A way to instantly generate a unique link to surprise someone you love.
+
+---
+
+### 🛠️ How it's Built
+*   **Vanilla HTML & CSS**: Keeping it light and beautiful with glassmorphism styles.
+*   **JavaScript**: Bringing the interactions, sounds, and haptic feedback to life.
+
+*Crafted with ❤️ by Ehsanul Islam Sajjad*
+
+[Connect with me on LinkedIn](https://www.linkedin.com/in/hello-ehsan/)
