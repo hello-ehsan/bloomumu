@@ -53,9 +53,15 @@
             align-items: center;
             overflow-x: hidden;
             overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
             position: relative;
             background: radial-gradient(circle at center, var(--bg-radial) 0%, var(--bg-dark) 100%);
             padding: 20px 0;
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
         }
 
         /* Background Particle Animation */
