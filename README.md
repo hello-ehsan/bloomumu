@@ -32,10 +32,14 @@ This project started with a heartbeat and a wish. It was created by **Ehsanul Is
 *   **Vanilla HTML & CSS**: Keeping it light and beautiful with glassmorphism styles.
 *   **JavaScript**: Bringing the interactions, sounds, and haptic feedback to life.
 
+---
+
+## Repository Stats
+
+![GitHub Repo stars](https://img.shields.io/github/stars/hello-ehsan/bloomumu?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/hello-ehsan/bloomumu?style=for-the-badge)
+![Repo views](https://komarev.com/ghpvc/?username=hello-ehsan&repo=bloomumu&style=for-the-badge&color=brightgreen)
+
 *Crafted with ❤️ by Ehsanul Islam Sajjad*
 
 If this digital letter touched your heart, or if you have a magical idea to make it even better, [I'd love to hear from you](https://www.linkedin.com/in/hello-ehsan/).
-
-
-## Repository Stats
-![Repo views](https://komarev.com/ghpvc/?username=hello-ehsan&repo=bloomumu&color=brightgreen)
